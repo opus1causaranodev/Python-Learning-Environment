@@ -1,0 +1,798 @@
+/* ==========================================================================
+   responsive.css — Responsive Layout, Mobile Navigation & Print Styles
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Skip Navigation Link (accessibility)
+   ========================================================================== */
+
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 24px;
+    background: var(--accent-primary);
+    color: var(--button-primary-text, #fff);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+
+/* ==========================================================================
+   Focus-visible outlines (accessibility)
+   ========================================================================== */
+
+*:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Remove default outlines for mouse users */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+
+/* ==========================================================================
+   Bottom Navigation Bar (Mobile)
+   ========================================================================== */
+
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    z-index: 300;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    /* Safe area for notched phones */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    flex: 1;
+    padding: 6px 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.625rem;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: color 0.15s ease, background 0.15s ease;
+    min-height: 44px;
+    min-width: 44px;
+    position: relative;
+}
+
+.bottom-nav-item:hover,
+.bottom-nav-item:focus-visible {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+}
+
+.bottom-nav-item.active {
+    color: var(--accent-primary);
+}
+
+.bottom-nav-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.bottom-nav-label {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* "More" menu popup */
+.bottom-nav-more-menu {
+    display: none;
+    position: fixed;
+    bottom: 60px;
+    right: 8px;
+    min-width: 180px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 -8px 32px var(--shadow-color);
+    z-index: 310;
+    overflow: hidden;
+    animation: bottomNavMenuIn 0.15s ease;
+}
+
+.bottom-nav-more-menu.open {
+    display: block;
+}
+
+@keyframes bottomNavMenuIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bottom-nav-more-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    min-height: 44px;
+}
+
+.bottom-nav-more-item:hover,
+.bottom-nav-more-item:focus-visible {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.bottom-nav-more-item.active {
+    color: var(--accent-primary);
+}
+
+.bottom-nav-more-item + .bottom-nav-more-item {
+    border-top: 1px solid var(--border-color);
+}
+
+.bottom-nav-more-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Backdrop for closing more menu on tap outside */
+.bottom-nav-more-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 305;
+}
+
+.bottom-nav-more-backdrop.open {
+    display: block;
+}
+
+
+/* ==========================================================================
+   Shortcuts Help Modal
+   ========================================================================== */
+
+.shortcuts-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.shortcuts-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.shortcuts-modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px var(--shadow-color);
+    animation: shortcutsModalIn 0.2s ease;
+}
+
+@keyframes shortcutsModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.shortcuts-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.shortcuts-modal-header h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.shortcuts-modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.shortcuts-modal-close:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.shortcuts-modal-body {
+    padding: 16px 24px 24px;
+}
+
+.shortcuts-group {
+    margin-bottom: 20px;
+}
+
+.shortcuts-group:last-child {
+    margin-bottom: 0;
+}
+
+.shortcuts-group-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.shortcuts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.shortcut-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+
+.shortcut-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.shortcut-keys {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.shortcut-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 26px;
+    padding: 0 8px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.shortcut-separator {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   Tablet (768px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Sidebar auto-collapses to icon-only mode */
+    .app-sidebar:not(.open) {
+        width: 64px;
+        min-width: 64px;
+    }
+
+    .app-sidebar:not(.open) .sidebar-logo-text,
+    .app-sidebar:not(.open) .sidebar-nav-label,
+    .app-sidebar:not(.open) .sidebar-module-name,
+    .app-sidebar:not(.open) .sidebar-section-label,
+    .app-sidebar:not(.open) .sidebar-user-info {
+        display: none;
+    }
+
+    .app-sidebar:not(.open) .sidebar-logo {
+        justify-content: center;
+        padding: 16px 8px;
+    }
+
+    .app-sidebar:not(.open) .sidebar-nav-item {
+        justify-content: center;
+        padding: 12px 8px;
+    }
+
+    .app-sidebar:not(.open) .sidebar-module-item {
+        justify-content: center;
+        padding: 8px;
+    }
+
+    .app-sidebar:not(.open) .sidebar-user-stats {
+        justify-content: center;
+        padding: 12px 8px;
+    }
+
+    /* Reset the off-screen positioning from styles.css 1024px breakpoint */
+    .app-sidebar {
+        position: relative;
+        transform: none;
+    }
+
+    .app-sidebar.open {
+        width: 280px;
+        min-width: 280px;
+        box-shadow: none;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+    }
+
+    /* Main content fills available space */
+    .app-main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Dashboard: 2 per row */
+    .dashboard-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Code editor and output stack vertically */
+    .split-pane {
+        flex-direction: column;
+    }
+
+    .split-pane-left {
+        width: 100% !important;
+        min-width: auto;
+        max-height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .split-pane-divider {
+        width: 100%;
+        height: 4px;
+        cursor: row-resize;
+    }
+
+    .split-pane-right {
+        min-width: auto;
+    }
+
+    /* Modal */
+    .modal {
+        max-width: 90vw;
+    }
+}
+
+
+/* ==========================================================================
+   Mobile (< 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* ----- Sidebar: full-screen overlay ----- */
+    .app-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        min-width: 100vw;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 200;
+        transition: transform 0.3s ease;
+    }
+
+    .app-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .app-sidebar.collapsed {
+        width: 100vw;
+        min-width: 100vw;
+    }
+
+    .sidebar-toggle {
+        display: none;
+    }
+
+    /* ----- Header: sticky compact ----- */
+    .app-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 0 12px;
+        height: 48px;
+        min-height: 48px;
+    }
+
+    /* Hide breadcrumb path, show current view name only */
+    .header-breadcrumbs .breadcrumb-sep,
+    .header-breadcrumbs span:first-child {
+        display: none;
+    }
+
+    .breadcrumb-current {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    /* Hide search on mobile */
+    .header-search {
+        display: none;
+    }
+
+    /* ----- Single column layout ----- */
+    .app-content {
+        padding: 16px;
+        padding-bottom: 72px; /* space for bottom nav */
+    }
+
+    /* Dashboard: 1 per row */
+    .dashboard-stats-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Projects: single column */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Progress: single column */
+    .progress-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Lesson content: comfortable padding */
+    .lesson-content {
+        padding: 0;
+    }
+
+    .lesson-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Code textareas */
+    .code-editor textarea,
+    .code-content,
+    textarea {
+        min-height: 150px;
+    }
+
+    /* Split pane: vertical stacking */
+    .split-pane {
+        flex-direction: column;
+    }
+
+    .split-pane-left {
+        width: 100% !important;
+        min-width: auto;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .split-pane-divider {
+        width: 100%;
+        height: 4px;
+        cursor: row-resize;
+    }
+
+    .split-pane-right {
+        min-width: auto;
+    }
+
+    /* Settings modal: full-width */
+    .modal {
+        width: 100%;
+        max-width: 100vw;
+        margin: 8px;
+        border-radius: 16px;
+    }
+
+    /* Theme grid: 2 columns on mobile */
+    .theme-switcher-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Touch-friendly: minimum 44px tap target */
+    .btn,
+    .btn-icon,
+    .pill-item,
+    .tab-item,
+    .sidebar-nav-item,
+    .accordion-trigger,
+    button {
+        min-height: 44px;
+    }
+
+    .btn-icon {
+        min-width: 44px;
+    }
+
+    /* Footer: hide on mobile (replaced by bottom nav) */
+    .app-footer {
+        display: none;
+    }
+
+    /* Bottom nav: show */
+    .bottom-nav {
+        display: flex;
+    }
+
+    /* Toast position: above bottom nav */
+    .toast-container {
+        bottom: 64px;
+    }
+
+    /* Achievement popup: above bottom nav */
+    .achievement-popup {
+        bottom: 72px;
+    }
+
+    /* Lesson navigation */
+    .lesson-nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .lesson-nav .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Examples: single column */
+    .example-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .example-item-tags {
+        margin-top: 8px;
+    }
+
+    /* Heatmap: horizontal scroll */
+    .heatmap-grid {
+        overflow-x: auto;
+    }
+
+    /* Typography scale-down */
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1rem; }
+
+    /* Output drawer: full-width bottom on mobile */
+    .output-drawer.dock-right {
+        right: 0;
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   Small Mobile (< 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    .app-content {
+        padding: 12px;
+        padding-bottom: 72px;
+    }
+
+    .dashboard-stat-card {
+        padding: 12px;
+    }
+
+    .dashboard-stat-value {
+        font-size: 1.125rem;
+    }
+
+    .project-card {
+        padding: 14px;
+    }
+
+    .shortcuts-modal {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .shortcut-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .shortcut-keys {
+        margin-left: 0;
+    }
+}
+
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    /* Hide non-content elements */
+    .app-sidebar,
+    .app-header,
+    .app-footer,
+    .bottom-nav,
+    .sidebar-mobile-overlay,
+    .header-menu-btn,
+    .sidebar-toggle,
+    .toast-container,
+    .modal-overlay,
+    .shortcuts-overlay,
+    .output-drawer,
+    .achievement-popup,
+    .lesson-nav,
+    .code-editor-toolbar .run-btn,
+    .code-block-copy,
+    .challenge-hint-toggle,
+    .btn,
+    .bottom-nav-more-menu,
+    .bottom-nav-more-backdrop,
+    #pyodide-loading-overlay {
+        display: none !important;
+    }
+
+    /* Reset layout */
+    body {
+        overflow: visible;
+        height: auto;
+        background: #fff;
+        color: #000;
+    }
+
+    .app-shell {
+        display: block;
+        height: auto;
+    }
+
+    .app-main {
+        overflow: visible;
+    }
+
+    .app-content {
+        overflow: visible;
+        padding: 0;
+        background: #fff;
+    }
+
+    /* Show only the active view */
+    .view {
+        display: none !important;
+    }
+
+    .view.active {
+        display: block !important;
+    }
+
+    /* Clean typography */
+    h1, h2, h3, h4 {
+        color: #000;
+        page-break-after: avoid;
+    }
+
+    p {
+        color: #333;
+        orphans: 3;
+        widows: 3;
+    }
+
+    pre, code {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        color: #333;
+    }
+
+    .card,
+    .dashboard-stat-card,
+    .project-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        background: #fff;
+        page-break-inside: avoid;
+    }
+
+    /* Progress bars: use border for visibility */
+    .progress-bar {
+        border: 1px solid #ccc;
+    }
+
+    .progress-bar-fill {
+        background: #666 !important;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "pylearn",
+    "version": "1.0.0",
+    "description": "PyLearn — Python Learning Environment",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --win"
+    },
+    "build": {
+        "appId": "com.pylearn.app",
+        "productName": "PyLearn",
+        "directories": {
+            "output": "dist"
+        },
+        "files": [
+            "main.js",
+            "index.html",
+            "styles.css",
+            "css/**/*",
+            "js/**/*",
+            "fonts/**/*",
+            "pyodide/**/*",
+            "curriculum.js",
+            "examples.js",
+            "activities_m1_m4.js",
+            "activities_m5_m8.js",
+            "activities_m9_m12.js",
+            "projects_part1.js",
+            "projects_part2.js"
+        ],
+        "win": {
+            "target": "portable",
+            "signAndEditExecutable": false,
+            "signingHashAlgorithms": null
+        },
+        "portable": {
+            "artifactName": "PyLearn.exe"
+        }
+    },
+    "devDependencies": {
+        "electron": "^33.0.0",
+        "electron-builder": "^25.0.0"
+    }
+}

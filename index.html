@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight-ocean">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyLearn — Python Learning Environment</title>
+
+    <!-- Fonts (bundled locally for offline use) -->
+    <style>
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/Inter.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('fonts/Inter-SemiBold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('fonts/Inter-Bold.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('fonts/JetBrainsMono-Bold.woff2') format('woff2');
+        }
+    </style>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <a href="#appContent" class="skip-to-content">Skip to main content</a>
+
+    <!-- ===== App Shell ===== -->
+    <div class="app-shell">
+
+        <!-- ===== Sidebar ===== -->
+        <aside class="app-sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+            <button class="sidebar-toggle" id="sidebarToggle" data-tooltip="Toggle sidebar" data-tooltip-pos="right">
+                &#9664;
+            </button>
+
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">Py</div>
+                <span class="sidebar-logo-text">PyLearn</span>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-label">Main</div>
+
+                <div class="sidebar-nav-item active" data-view="dashboard">
+                    <span class="sidebar-nav-icon">&#9776;</span>
+                    <span class="sidebar-nav-label">Dashboard</span>
+                </div>
+                <div class="sidebar-nav-item" data-view="lesson">
+                    <span class="sidebar-nav-icon">&#128218;</span>
+                    <span class="sidebar-nav-label">Lessons</span>
+                </div>
+                <div class="sidebar-nav-item" data-view="challenge">
+                    <span class="sidebar-nav-icon">&#9889;</span>
+                    <span class="sidebar-nav-label">Challenges</span>
+                </div>
+                <div class="sidebar-nav-item" data-view="projects">
+                    <span class="sidebar-nav-icon">&#128187;</span>
+                    <span class="sidebar-nav-label">Projects</span>
+                </div>
+                <div class="sidebar-nav-item" data-view="examples">
+                    <span class="sidebar-nav-icon">&#128196;</span>
+                    <span class="sidebar-nav-label">Examples</span>
+                </div>
+                <div class="sidebar-nav-item" data-view="progress">
+                    <span class="sidebar-nav-icon">&#128200;</span>
+                    <span class="sidebar-nav-label">Progress</span>
+                </div>
+
+                <!-- Module List with Progress -->
+                <div class="sidebar-section-label">Modules</div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="0"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">1. Python Basics</span>
+                </div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="14"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">2. Control Flow</span>
+                </div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="28"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">3. Functions</span>
+                </div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="42"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">4. Data Structures</span>
+                </div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="56.5"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">5. OOP</span>
+                </div>
+
+                <div class="sidebar-module-item">
+                    <div class="sidebar-module-progress">
+                        <svg viewBox="0 0 24 24">
+                            <circle class="progress-ring-bg" cx="12" cy="12" r="9"></circle>
+                            <circle class="progress-ring-fill" cx="12" cy="12" r="9"
+                                stroke-dasharray="56.5" stroke-dashoffset="56.5"></circle>
+                        </svg>
+                    </div>
+                    <span class="sidebar-module-name">6. File Handling</span>
+                </div>
+            </nav>
+
+            <!-- User Stats Summary -->
+            <div class="sidebar-user-stats">
+                <div class="sidebar-user-avatar">PL</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">Python Learner</div>
+                    <div class="sidebar-user-level">Level 12 &middot; 4,280 XP</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===== Main Content Area ===== -->
+        <div class="app-main">
+
+            <!-- Header Bar -->
+            <header class="app-header">
+                <button class="header-menu-btn btn-icon" id="menuBtn">&#9776;</button>
+
+                <div class="header-breadcrumbs">
+                    <span>PyLearn</span>
+                    <span class="breadcrumb-sep">&#9656;</span>
+                    <span class="breadcrumb-current" id="breadcrumbCurrent">Dashboard</span>
+                </div>
+
+                <div class="header-search">
+                    <span class="header-search-icon">&#128269;</span>
+                    <input type="text" class="form-input" placeholder="Search lessons, challenges, examples...">
+                </div>
+
+                <div class="header-actions">
+                    <button class="btn-icon" id="searchBtn" title="Search (Ctrl+K)" aria-label="Search">&#128269;</button>
+                    <button class="btn-icon" id="notifBtn" title="Notifications" aria-label="Notifications">&#128276;</button>
+                    <button class="btn-icon" id="settingsBtn" title="Settings">&#9881;</button>
+                </div>
+            </header>
+
+            <!-- Content Panel — Switched between views -->
+            <main class="app-content" id="appContent" role="main">
+
+                <!-- ========== Dashboard View ========== -->
+                <section class="view view-dashboard active" id="viewDashboard">
+                    <div class="dashboard-greeting">
+                        <h1>Welcome back, <span class="text-gradient">Learner</span></h1>
+                        <p id="dashGreeting">Continue your Python journey!</p>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="dashboard-stats-row">
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon lessons">&#128218;</div>
+                            <div class="dashboard-stat-value">24</div>
+                            <div class="dashboard-stat-label">Lessons Done</div>
+                        </div>
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon streak">&#128293;</div>
+                            <div class="dashboard-stat-value">7</div>
+                            <div class="dashboard-stat-label">Day Streak</div>
+                        </div>
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon xp">&#11088;</div>
+                            <div class="dashboard-stat-value">4,280</div>
+                            <div class="dashboard-stat-label">Total XP</div>
+                        </div>
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon time">&#9200;</div>
+                            <div class="dashboard-stat-value">18h</div>
+                            <div class="dashboard-stat-label">Study Time</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Continue Learning -->
+                        <div class="dashboard-continue-section">
+                            <h3 class="section-title"><span class="icon">&#9654;</span> Continue Learning</h3>
+
+                            <div class="continue-card">
+                                <div class="continue-card-icon">&#128013;</div>
+                                <div class="continue-card-info">
+                                    <h4>Functions & Parameters</h4>
+                                    <p>Module 3 &middot; Lesson 4 of 8</p>
+                                    <div class="progress-bar progress-bar-sm">
+                                        <div class="progress-bar-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="continue-card">
+                                <div class="continue-card-icon">&#9889;</div>
+                                <div class="continue-card-info">
+                                    <h4>FizzBuzz Challenge</h4>
+                                    <p>Challenge &middot; 2 of 5 tests passing</p>
+                                    <div class="progress-bar progress-bar-sm">
+                                        <div class="progress-bar-fill" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="continue-card">
+                                <div class="continue-card-icon">&#128187;</div>
+                                <div class="continue-card-info">
+                                    <h4>Calculator Project</h4>
+                                    <p>Project &middot; 3 of 6 features done</p>
+                                    <div class="progress-bar progress-bar-sm">
+                                        <div class="progress-bar-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Feed -->
+                        <div class="dashboard-activity-section">
+                            <h3 class="section-title"><span class="icon">&#128338;</span> Recent Activity</h3>
+                            <div class="card">
+                                <div class="activity-item">
+                                    <div class="activity-dot completed"></div>
+                                    <span>Completed <strong>Variables & Types</strong></span>
+                                    <span class="activity-time">2h ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot achieved"></div>
+                                    <span>Earned <strong>Week Warrior</strong> badge</span>
+                                    <span class="activity-time">5h ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot started"></div>
+                                    <span>Started <strong>Functions</strong> module</span>
+                                    <span class="activity-time">1d ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot completed"></div>
+                                    <span>Passed <strong>Loop Master</strong> challenge</span>
+                                    <span class="activity-time">1d ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot completed"></div>
+                                    <span>Completed <strong>While Loops</strong></span>
+                                    <span class="activity-time">2d ago</span>
+                                </div>
+                            </div>
+
+                            <!-- Streak Counter -->
+                            <div class="streak-counter mt-16">
+                                <div class="streak-flame">&#128293;</div>
+                                <div class="streak-info">
+                                    <div class="streak-count">7</div>
+                                    <div class="streak-label">Day Streak</div>
+                                    <div class="streak-days">
+                                        <div class="streak-day active">M</div>
+                                        <div class="streak-day active">T</div>
+                                        <div class="streak-day active">W</div>
+                                        <div class="streak-day active">T</div>
+                                        <div class="streak-day active">F</div>
+                                        <div class="streak-day active">S</div>
+                                        <div class="streak-day today active">S</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- ========== Lesson Viewer ========== -->
+                <section class="view view-lesson" id="viewLesson">
+                    <div class="lesson-header">
+                        <div class="d-flex items-center gap-8 mb-8">
+                            <span class="badge badge-primary">Module 3</span>
+                            <div class="difficulty" data-level="intermediate">
+                                <div class="difficulty-dots">
+                                    <div class="difficulty-dot"></div>
+                                    <div class="difficulty-dot"></div>
+                                    <div class="difficulty-dot"></div>
+                                </div>
+                                <span class="difficulty-label">Intermediate</span>
+                            </div>
+                        </div>
+                        <h2>Functions & Parameters</h2>
+                        <div class="lesson-meta">
+                            <span>&#128338; 15 min read</span>
+                            <span>&#128196; Lesson 4 of 8</span>
+                            <div class="star-rating">
+                                <span class="star filled">&#9733;</span>
+                                <span class="star filled">&#9733;</span>
+                                <span class="star filled">&#9733;</span>
+                                <span class="star filled">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-label">
+                        <span class="label">Lesson Progress</span>
+                        <span class="value">50%</span>
+                    </div>
+                    <div class="progress-bar mb-24">
+                        <div class="progress-bar-fill" style="width: 50%"></div>
+                    </div>
+
+                    <div class="lesson-content">
+                        <h3>What are Functions?</h3>
+                        <p>Functions are reusable blocks of code that perform a specific task. They help organize your code, make it more readable, and avoid repetition.</p>
+
+                        <div class="code-block">
+                            <div class="code-block-header">
+                                <span class="code-block-lang">Python</span>
+                                <button class="code-block-copy">Copy</button>
+                            </div>
+                            <pre><code><span class="keyword">def</span> <span class="function">greet</span>(name):
+    <span class="comment"># This function prints a greeting</span>
+    <span class="keyword">return</span> <span class="string">f"Hello, {name}!"</span>
+
+message = <span class="function">greet</span>(<span class="string">"World"</span>)
+<span class="function">print</span>(message)  <span class="comment"># Output: Hello, World!</span></code></pre>
+                        </div>
+
+                        <h3>Parameters and Arguments</h3>
+                        <p>Parameters are variables listed in the function definition. Arguments are the actual values passed to the function when calling it.</p>
+
+                        <div class="code-block">
+                            <div class="code-block-header">
+                                <span class="code-block-lang">Python</span>
+                                <button class="code-block-copy">Copy</button>
+                            </div>
+                            <pre><code><span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+result = <span class="function">add</span>(<span class="number">3</span>, <span class="number">5</span>)
+<span class="function">print</span>(result)  <span class="comment"># Output: 8</span></code></pre>
+                        </div>
+
+                        <!-- Accordion: Key Concepts -->
+                        <div class="accordion mt-24">
+                            <div class="accordion-item open">
+                                <button class="accordion-trigger">
+                                    Default Parameters
+                                    <span class="accordion-trigger-icon">&#9660;</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>You can assign default values to parameters. If no argument is provided, the default value is used.</p>
+                                        <code class="d-block p-12 rounded" style="background: var(--code-bg); color: var(--code-text);">
+                                            <span class="keyword">def</span> <span class="function">greet</span>(name=<span class="string">"World"</span>):<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f"Hello, {name}!"</span>
+                                        </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-trigger">
+                                    *args and **kwargs
+                                    <span class="accordion-trigger-icon">&#9660;</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p><code>*args</code> allows variable positional arguments, while <code>**kwargs</code> allows variable keyword arguments.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-trigger">
+                                    Return Values
+                                    <span class="accordion-trigger-icon">&#9660;</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-content-inner">
+                                        <p>Functions can return values using the <code>return</code> keyword. A function without a return statement returns <code>None</code>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="lesson-nav">
+                        <button class="btn btn-secondary">&larr; Previous Lesson</button>
+                        <button class="btn btn-primary">Next Lesson &rarr;</button>
+                    </div>
+                </section>
+
+
+                <!-- ========== Challenge Workspace (Split Pane) ========== -->
+                <section class="view view-challenge" id="viewChallenge">
+                    <div class="split-pane">
+                        <!-- Instructions Panel -->
+                        <div class="split-pane-left">
+                            <div class="challenge-instructions">
+                                <div class="d-flex items-center gap-8 mb-12">
+                                    <span class="badge badge-warning">Challenge</span>
+                                    <div class="difficulty" data-level="beginner">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Beginner</span>
+                                    </div>
+                                </div>
+
+                                <h3>FizzBuzz</h3>
+                                <p>Write a function <code>fizzbuzz(n)</code> that returns a list of strings for numbers 1 to n.</p>
+
+                                <div class="instruction-step">
+                                    <div class="instruction-step-number">1</div>
+                                    <p>For multiples of 3, use <code>"Fizz"</code></p>
+                                </div>
+                                <div class="instruction-step">
+                                    <div class="instruction-step-number">2</div>
+                                    <p>For multiples of 5, use <code>"Buzz"</code></p>
+                                </div>
+                                <div class="instruction-step">
+                                    <div class="instruction-step-number">3</div>
+                                    <p>For multiples of both, use <code>"FizzBuzz"</code></p>
+                                </div>
+                                <div class="instruction-step">
+                                    <div class="instruction-step-number">4</div>
+                                    <p>Otherwise, use the number as a string</p>
+                                </div>
+
+                                <!-- Hints -->
+                                <div class="challenge-hints">
+                                    <button class="challenge-hint-toggle" onclick="this.nextElementSibling.classList.toggle('visible')">
+                                        &#128161; Show Hint
+                                    </button>
+                                    <div class="challenge-hint-content">
+                                        Use the modulo operator <code>%</code> to check divisibility. Check for the combined case (divisible by both 3 and 5) first!
+                                    </div>
+                                </div>
+
+                                <!-- Test Cases -->
+                                <div class="challenge-tests mt-24">
+                                    <h4 class="mb-8">Test Cases</h4>
+                                    <div class="test-case passed">
+                                        <span class="test-case-icon">&#10004;</span>
+                                        <span>fizzbuzz(1) == ["1"]</span>
+                                    </div>
+                                    <div class="test-case passed">
+                                        <span class="test-case-icon">&#10004;</span>
+                                        <span>fizzbuzz(3) ends with "Fizz"</span>
+                                    </div>
+                                    <div class="test-case failed">
+                                        <span class="test-case-icon">&#10008;</span>
+                                        <span>fizzbuzz(5) ends with "Buzz"</span>
+                                    </div>
+                                    <div class="test-case pending">
+                                        <span class="test-case-icon">&#9679;</span>
+                                        <span>fizzbuzz(15) ends with "FizzBuzz"</span>
+                                    </div>
+                                    <div class="test-case pending">
+                                        <span class="test-case-icon">&#9679;</span>
+                                        <span>fizzbuzz(15) has 15 elements</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="split-pane-divider"></div>
+
+                        <!-- Code Editor Panel -->
+                        <div class="split-pane-right">
+                            <div class="code-editor-wrapper">
+                                <div class="code-editor-toolbar">
+                                    <span class="file-name">solution.py</span>
+                                    <div class="d-flex items-center gap-4">
+                                        <button class="btn btn-sm btn-secondary">Reset</button>
+                                        <button class="btn btn-sm btn-primary run-btn">&#9654; Run</button>
+                                    </div>
+                                </div>
+
+                                <div class="code-editor">
+                                    <div class="code-line-numbers">
+                                        <span class="line-number">1</span>
+                                        <span class="line-number">2</span>
+                                        <span class="line-number active">3</span>
+                                        <span class="line-number">4</span>
+                                        <span class="line-number">5</span>
+                                        <span class="line-number">6</span>
+                                        <span class="line-number">7</span>
+                                        <span class="line-number">8</span>
+                                        <span class="line-number">9</span>
+                                        <span class="line-number">10</span>
+                                        <span class="line-number">11</span>
+                                        <span class="line-number">12</span>
+                                    </div>
+                                    <div class="code-content" contenteditable="true" spellcheck="false"><span class="keyword">def</span> <span class="function">fizzbuzz</span>(n):
+    result = []
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+        <span class="keyword">if</span> i % <span class="number">15</span> == <span class="number">0</span>:
+            result.append(<span class="string">"FizzBuzz"</span>)
+        <span class="keyword">elif</span> i % <span class="number">3</span> == <span class="number">0</span>:
+            result.append(<span class="string">"Fizz"</span>)
+        <span class="keyword">elif</span> i % <span class="number">5</span> == <span class="number">0</span>:
+            result.append(<span class="string">"Buzz"</span>)
+        <span class="keyword">else</span>:
+            result.append(<span class="function">str</span>(i))
+    <span class="keyword">return</span> result</div>
+                                </div>
+
+                                <div class="code-output-panel">
+                                    <div class="code-output-header">
+                                        <span>&#9654;</span> Output
+                                        <button class="btn-icon" style="margin-left:auto; width:24px; height:24px; font-size:0.7rem;" data-tooltip="Clear">&#128465;</button>
+                                    </div>
+                                    <div class="code-output-body"><span class="output-success">&#10004; Test 1 passed: fizzbuzz(1) == ["1"]</span>
+<span class="output-success">&#10004; Test 2 passed: fizzbuzz(3) ends with "Fizz"</span>
+<span class="output-error">&#10008; Test 3 failed: Expected "Buzz" at index 4, got "5"</span>
+<span style="color: var(--text-muted);">&#9679; Test 4 skipped</span>
+<span style="color: var(--text-muted);">&#9679; Test 5 skipped</span>
+
+<span style="color: var(--text-secondary);">Results: 2/5 tests passed</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- ========== Projects List View ========== -->
+                <section class="view view-projects" id="viewProjects">
+                    <div class="projects-header">
+                        <div>
+                            <h2>Projects</h2>
+                            <p class="text-sm text-muted">Build real-world applications to practice your skills</p>
+                        </div>
+                        <div class="pills">
+                            <button class="pill-item active">All</button>
+                            <button class="pill-item">Beginner</button>
+                            <button class="pill-item">Intermediate</button>
+                            <button class="pill-item">Advanced</button>
+                        </div>
+                    </div>
+
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#129518;</div>
+                                <div>
+                                    <div class="project-card-title">Calculator</div>
+                                    <div class="difficulty" data-level="beginner">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Beginner</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Build a command-line calculator that handles basic arithmetic operations with error handling.</p>
+                            <div class="project-card-footer">
+                                <div class="progress-bar" style="flex:1; margin-right:12px;">
+                                    <div class="progress-bar-fill" style="width: 50%"></div>
+                                </div>
+                                <span class="text-xs text-muted">50%</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#128203;</div>
+                                <div>
+                                    <div class="project-card-title">To-Do List</div>
+                                    <div class="difficulty" data-level="beginner">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Beginner</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Create a task manager with add, delete, complete, and filter functionality using file storage.</p>
+                            <div class="project-card-footer">
+                                <span class="badge badge-info">Not Started</span>
+                                <span class="text-xs text-muted">6 tasks</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#127814;</div>
+                                <div>
+                                    <div class="project-card-title">Hangman Game</div>
+                                    <div class="difficulty" data-level="intermediate">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Build the classic word-guessing game with difficulty levels, score tracking, and ASCII art.</p>
+                            <div class="project-card-footer">
+                                <span class="badge badge-info">Not Started</span>
+                                <span class="text-xs text-muted">8 tasks</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#127760;</div>
+                                <div>
+                                    <div class="project-card-title">Web Scraper</div>
+                                    <div class="difficulty" data-level="advanced">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Build a web scraper using requests and BeautifulSoup to extract and analyze data from websites.</p>
+                            <div class="project-card-footer">
+                                <span class="badge badge-error">Locked</span>
+                                <span class="text-xs text-muted">10 tasks</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#128202;</div>
+                                <div>
+                                    <div class="project-card-title">Data Dashboard</div>
+                                    <div class="difficulty" data-level="advanced">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Analyze CSV data and generate visualizations with matplotlib. Learn pandas fundamentals.</p>
+                            <div class="project-card-footer">
+                                <span class="badge badge-error">Locked</span>
+                                <span class="text-xs text-muted">12 tasks</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-card-header">
+                                <div class="project-card-icon">&#129302;</div>
+                                <div>
+                                    <div class="project-card-title">Chat Bot</div>
+                                    <div class="difficulty" data-level="advanced">
+                                        <div class="difficulty-dots">
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                            <div class="difficulty-dot"></div>
+                                        </div>
+                                        <span class="difficulty-label">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="project-card-desc">Build a conversational chatbot using pattern matching and basic NLP concepts.</p>
+                            <div class="project-card-footer">
+                                <span class="badge badge-error">Locked</span>
+                                <span class="text-xs text-muted">14 tasks</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- ========== Examples Browser View ========== -->
+                <section class="view view-examples" id="viewExamples">
+                    <h2 class="mb-8">Code Examples</h2>
+                    <p class="text-secondary mb-16">Browse and run curated Python examples for every concept.</p>
+
+                    <div class="examples-filter-bar">
+                        <div class="pills">
+                            <button class="pill-item active">All</button>
+                            <button class="pill-item">Basics</button>
+                            <button class="pill-item">Strings</button>
+                            <button class="pill-item">Lists</button>
+                            <button class="pill-item">Dicts</button>
+                            <button class="pill-item">Functions</button>
+                            <button class="pill-item">Classes</button>
+                            <button class="pill-item">Files</button>
+                        </div>
+                    </div>
+
+                    <div class="examples-list">
+                        <div class="example-item">
+                            <div class="example-item-icon">&#128221;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">Hello World & Print Formatting</div>
+                                <div class="example-item-desc">Learn different ways to print output in Python using f-strings, .format(), and concatenation.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Basics</span>
+                                <span class="chip">Strings</span>
+                            </div>
+                        </div>
+
+                        <div class="example-item">
+                            <div class="example-item-icon">&#128290;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">List Comprehensions</div>
+                                <div class="example-item-desc">Master Python's powerful list comprehension syntax for creating and filtering lists concisely.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Lists</span>
+                            </div>
+                        </div>
+
+                        <div class="example-item">
+                            <div class="example-item-icon">&#128218;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">Dictionary Operations</div>
+                                <div class="example-item-desc">Explore creating, accessing, updating, and iterating over Python dictionaries.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Dicts</span>
+                            </div>
+                        </div>
+
+                        <div class="example-item">
+                            <div class="example-item-icon">&#128268;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">Decorators & Closures</div>
+                                <div class="example-item-desc">Understand higher-order functions, closures, and how to write and use decorators.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Functions</span>
+                                <span class="badge badge-warning">Advanced</span>
+                            </div>
+                        </div>
+
+                        <div class="example-item">
+                            <div class="example-item-icon">&#127963;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">Class Inheritance</div>
+                                <div class="example-item-desc">Build class hierarchies with inheritance, method overriding, and the super() function.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Classes</span>
+                            </div>
+                        </div>
+
+                        <div class="example-item">
+                            <div class="example-item-icon">&#128193;</div>
+                            <div class="example-item-info">
+                                <div class="example-item-title">Reading & Writing Files</div>
+                                <div class="example-item-desc">Work with text files, CSV data, and JSON using Python's built-in file handling.</div>
+                            </div>
+                            <div class="example-item-tags">
+                                <span class="chip">Files</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- ========== Progress / Stats Page ========== -->
+                <section class="view view-progress" id="viewProgress">
+                    <h2 class="mb-24">Your Progress</h2>
+
+                    <button id="resetProgressBtn" class="btn btn-sm" style="float:right;background:var(--danger);color:#fff;">Reset All Progress</button>
+
+                    <!-- Overview Cards -->
+                    <div class="progress-overview-grid">
+                        <div class="progress-overview-card">
+                            <div class="circular-progress circular-progress-lg">
+                                <svg viewBox="0 0 80 80">
+                                    <circle class="progress-circle-bg" cx="40" cy="40" r="35"></circle>
+                                    <circle class="progress-circle-fill" cx="40" cy="40" r="35"
+                                        stroke-dasharray="220" stroke-dashoffset="88"></circle>
+                                </svg>
+                                <span class="progress-value">60%</span>
+                            </div>
+                            <h4 class="mt-12">Overall Completion</h4>
+                            <p class="text-sm text-muted">24 of 40 lessons done</p>
+                        </div>
+
+                        <div class="progress-overview-card">
+                            <div class="circular-progress circular-progress-lg">
+                                <svg viewBox="0 0 80 80">
+                                    <circle class="progress-circle-bg" cx="40" cy="40" r="35"></circle>
+                                    <circle class="progress-circle-fill" cx="40" cy="40" r="35"
+                                        stroke-dasharray="220" stroke-dashoffset="132"></circle>
+                                </svg>
+                                <span class="progress-value">40%</span>
+                            </div>
+                            <h4 class="mt-12">Challenges</h4>
+                            <p class="text-sm text-muted">8 of 20 solved</p>
+                        </div>
+
+                        <div class="progress-overview-card">
+                            <div class="circular-progress circular-progress-lg">
+                                <svg viewBox="0 0 80 80">
+                                    <circle class="progress-circle-bg" cx="40" cy="40" r="35"></circle>
+                                    <circle class="progress-circle-fill" cx="40" cy="40" r="35"
+                                        stroke-dasharray="220" stroke-dashoffset="176"></circle>
+                                </svg>
+                                <span class="progress-value">20%</span>
+                            </div>
+                            <h4 class="mt-12">Projects</h4>
+                            <p class="text-sm text-muted">1 of 5 completed</p>
+                        </div>
+                    </div>
+
+                    <!-- Skill Bars (populated dynamically per module) -->
+                    <div class="progress-detail-section">
+                        <h3 class="section-title"><span class="icon">&#127919;</span> Skills Breakdown</h3>
+                        <div class="card">
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Python Basics</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Operators</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Control Flow</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Loops</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Strings</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Lists & Tuples</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Dictionaries</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Functions</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Error Handling</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">OOP</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Modules & Stdlib</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                            <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-label">Advanced Topics</span><span class="skill-bar-value">0%</span></div><div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Tabs for additional stats -->
+                    <div class="tabs mb-16">
+                        <button class="tab-item active">Activity</button>
+                        <button class="tab-item">Achievements</button>
+                        <button class="tab-item">Time Spent</button>
+                    </div>
+
+                    <div class="card">
+                        <h4 class="mb-12">Learning Activity — Last 12 Weeks</h4>
+                        <div class="heatmap-grid">
+                            <!-- Row of heatmap cells: 52 weeks x ~7 days simplified to a single row for demo -->
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="0"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="1"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="2"></div>
+                            <div class="heatmap-cell" data-level="3"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                            <div class="heatmap-cell" data-level="4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement Badges -->
+                    <div id="gamification-badges-container" style="margin-top:24px;"></div>
+                    <!-- Activity Heatmap -->
+                    <div id="gamification-heatmap-container" style="margin-top:24px;"></div>
+                    <!-- Export Buttons -->
+                    <div style="margin-top:24px;">
+                        <div class="export-btn-group">
+                            <button class="btn-export" id="exportReportBtn">&#128229; Download Report</button>
+                            <button class="btn-export" id="printReportBtn">&#128424; Print Report</button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer — Quick Stats Bar -->
+            <footer class="app-footer">
+                <div class="footer-stat">
+                    <span class="footer-stat-icon">&#128293;</span>
+                    <span class="footer-stat-value">7</span> day streak
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-stat">
+                    <span class="footer-stat-icon">&#11088;</span>
+                    <span class="footer-stat-value">4,280</span> XP
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-stat">
+                    <span class="footer-stat-icon">&#128218;</span>
+                    <span class="footer-stat-value">24</span> lessons
+                </div>
+                <div class="footer-right">
+                    <span class="text-muted">PyLearn v1.0</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ===== Global Output Drawer ===== -->
+    <div class="output-drawer" id="outputDrawer">
+        <div class="output-drawer-header">
+            <span class="output-drawer-title">&#9654; Output</span>
+            <div style="display:flex;gap:4px;margin-left:auto;">
+                <button class="btn-icon output-drawer-dock" id="outputDockToggle" title="Toggle position">&#8660;</button>
+                <button class="btn-icon output-drawer-close" id="outputDrawerClose" title="Close">&times;</button>
+            </div>
+        </div>
+        <div class="output-drawer-body" id="outputDrawerBody">
+            <span class="text-muted">Run code to see output here.</span>
+        </div>
+    </div>
+
+    <!-- ===== Bottom Navigation (Mobile) ===== -->
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <button class="bottom-nav-item active" data-view="dashboard"><span class="bottom-nav-icon" aria-hidden="true">&#9776;</span><span class="bottom-nav-label">Dashboard</span></button>
+        <button class="bottom-nav-item" data-view="lesson"><span class="bottom-nav-icon" aria-hidden="true">&#128218;</span><span class="bottom-nav-label">Lessons</span></button>
+        <button class="bottom-nav-item" data-view="challenge"><span class="bottom-nav-icon" aria-hidden="true">&#9889;</span><span class="bottom-nav-label">Challenges</span></button>
+        <button class="bottom-nav-item" data-action="more"><span class="bottom-nav-icon" aria-hidden="true">&#8943;</span><span class="bottom-nav-label">More</span></button>
+    </nav>
+    <div class="bottom-nav-more-backdrop"></div>
+    <nav class="bottom-nav-more-menu" aria-label="More navigation options">
+        <button class="bottom-nav-more-item" data-view="projects"><span aria-hidden="true">&#128187;</span> Projects</button>
+        <button class="bottom-nav-more-item" data-view="examples"><span aria-hidden="true">&#128196;</span> Examples</button>
+        <button class="bottom-nav-more-item" data-view="progress"><span aria-hidden="true">&#128200;</span> Progress</button>
+    </nav>
+
+    <!-- ===== Toast Container ===== -->
+    <div class="toast-container" id="toastContainer" aria-live="polite">
+        <!-- Toasts are injected here dynamically -->
+    </div>
+
+    <!-- ===== Modal Overlay ===== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Hint</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Remember: when checking for FizzBuzz, you need to check divisibility by 15 <strong>first</strong>, before checking for 3 or 5 individually.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="closeModal()">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Settings Modal ===== -->
+    <div class="modal-overlay" id="settingsOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Settings</h3>
+                <button class="modal-close" id="settingsClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom:16px;">
+                    <label style="font-weight:600;display:block;margin-bottom:8px;color:var(--text-primary);">Theme</label>
+                    <div class="theme-switcher-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:320px;overflow-y:auto;padding-right:4px;">
+                        <button class="theme-swatch-btn active" data-theme="midnight-ocean"><span class="theme-swatch" data-theme="midnight-ocean"></span> Midnight Ocean</button>
+                        <button class="theme-swatch-btn" data-theme="solar-flare"><span class="theme-swatch" data-theme="solar-flare"></span> Solar Flare</button>
+                        <button class="theme-swatch-btn" data-theme="forest-canopy"><span class="theme-swatch" data-theme="forest-canopy"></span> Forest Canopy</button>
+                        <button class="theme-swatch-btn" data-theme="arctic-frost"><span class="theme-swatch" data-theme="arctic-frost"></span> Arctic Frost</button>
+                        <button class="theme-swatch-btn" data-theme="sakura-bloom"><span class="theme-swatch" data-theme="sakura-bloom"></span> Sakura Bloom</button>
+                        <button class="theme-swatch-btn" data-theme="cyberpunk-neon"><span class="theme-swatch" data-theme="cyberpunk-neon"></span> Cyberpunk Neon</button>
+                        <button class="theme-swatch-btn" data-theme="dracula-purple"><span class="theme-swatch" data-theme="dracula-purple"></span> Dracula Purple</button>
+                        <button class="theme-swatch-btn" data-theme="monokai-pro"><span class="theme-swatch" data-theme="monokai-pro"></span> Monokai Pro</button>
+                        <button class="theme-swatch-btn" data-theme="nord-aurora"><span class="theme-swatch" data-theme="nord-aurora"></span> Nord Aurora</button>
+                        <button class="theme-swatch-btn" data-theme="sunset-vibes"><span class="theme-swatch" data-theme="sunset-vibes"></span> Sunset Vibes</button>
+                        <button class="theme-swatch-btn" data-theme="ocean-breeze"><span class="theme-swatch" data-theme="ocean-breeze"></span> Ocean Breeze</button>
+                        <button class="theme-swatch-btn" data-theme="lavender-dusk"><span class="theme-swatch" data-theme="lavender-dusk"></span> Lavender Dusk</button>
+                        <button class="theme-swatch-btn" data-theme="solarized-dark"><span class="theme-swatch" data-theme="solarized-dark"></span> Solarized Dark</button>
+                        <button class="theme-swatch-btn" data-theme="ruby-red"><span class="theme-swatch" data-theme="ruby-red"></span> Ruby Red</button>
+                        <button class="theme-swatch-btn" data-theme="golden-sand"><span class="theme-swatch" data-theme="golden-sand"></span> Golden Sand</button>
+                        <button class="theme-swatch-btn" data-theme="midnight-ember"><span class="theme-swatch" data-theme="midnight-ember"></span> Midnight Ember</button>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="font-weight:600;display:block;margin-bottom:8px;color:var(--text-primary);">Font Size</label>
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn btn-sm btn-secondary" id="fontSmall">Small</button>
+                        <button class="btn btn-sm btn-secondary" id="fontMedium">Medium</button>
+                        <button class="btn btn-sm btn-secondary" id="fontLarge">Large</button>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="font-weight:600;display:block;margin-bottom:8px;color:var(--text-primary);">Editor Tab Size</label>
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn btn-sm btn-secondary" id="tab2">2 spaces</button>
+                        <button class="btn btn-sm btn-secondary" id="tab4">4 spaces</button>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="font-weight:600;display:block;margin-bottom:8px;color:var(--text-primary);">Output Panel Position</label>
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn btn-sm btn-secondary" id="outputBottom">Bottom</button>
+                        <button class="btn btn-sm btn-secondary" id="outputRight">Right Side</button>
+                    </div>
+                </div>
+                <div style="border-top:1px solid var(--border-color);padding-top:16px;">
+                    <label style="font-weight:600;display:block;margin-bottom:8px;color:var(--danger);">Danger Zone</label>
+                    <button class="btn btn-sm" id="settingsResetBtn" style="background:var(--danger);color:#fff;">Reset All Progress</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="settingsDone">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Notifications Panel ===== -->
+    <div class="modal-overlay" id="notifOverlay">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Notifications</h3>
+                <button class="modal-close" id="notifClose">&times;</button>
+            </div>
+            <div class="modal-body" id="notifBody">
+                <p class="text-muted">No new notifications. Complete challenges to see your activity here!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="notifDone">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Reset Confirmation Modal ===== -->
+    <div class="modal-overlay" id="resetConfirmOverlay">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color:var(--danger);">Reset All Progress</h3>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom:12px;">This will <strong>permanently delete</strong> all your progress, completed challenges, project saves, and achievements.</p>
+                <p style="margin-bottom:12px;">Type <strong style="color:var(--danger);">DELETE MY PROGRESS</strong> to confirm:</p>
+                <input type="text" class="form-input" id="resetConfirmInput" placeholder="Type here..." autocomplete="off" style="width:100%;font-family:monospace;">
+                <p id="resetConfirmError" style="color:var(--danger);font-size:0.8rem;margin-top:8px;display:none;"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="resetCancelBtn">Cancel</button>
+                <button class="btn" id="resetConfirmBtn" style="background:var(--danger);color:#fff;">Delete Everything</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Code History Modal ===== -->
+    <div class="modal-overlay" id="historyOverlay" role="dialog" aria-modal="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Code History</h3>
+                <button class="modal-close" id="historyClose">&times;</button>
+            </div>
+            <div class="modal-body" id="historyBody" style="max-height:60vh;overflow-y:auto;">
+                <p style="color:var(--text-secondary);">No history saved yet.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="historyDone">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Achievement Popup ===== -->
+    <div class="achievement-popup" id="achievementPopup">
+        <div class="achievement-icon">&#127942;</div>
+        <div class="achievement-info">
+            <h4>Achievement Unlocked</h4>
+            <h3>Week Warrior</h3>
+            <p>Maintained a 7-day learning streak!</p>
+        </div>
+    </div>
+
+    <!-- ===== Mobile Sidebar Overlay ===== -->
+    <div class="sidebar-mobile-overlay" id="sidebarOverlay"></div>
+
+
+    <!-- ===== JavaScript: Navigation, Theme Switching, Interactivity ===== -->
+    <script>
+    (function () {
+        'use strict';
+
+        // ----- Elements -----
+        const html = document.documentElement;
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const navItems = document.querySelectorAll('.sidebar-nav-item[data-view]');
+        const views = document.querySelectorAll('.view');
+        const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+        const themeSwitches = document.querySelectorAll('.theme-swatch-btn');
+        const toastContainer = document.getElementById('toastContainer');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const achievementPopup = document.getElementById('achievementPopup');
+        const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+        const copyButtons = document.querySelectorAll('.code-block-copy');
+        const tabItems = document.querySelectorAll('.tab-item');
+        const pillItems = document.querySelectorAll('.pill-item');
+
+        // ----- View Switching -----
+        const viewNames = {
+            dashboard: 'Dashboard',
+            lesson: 'Lessons',
+            challenge: 'Challenges',
+            projects: 'Projects',
+            examples: 'Examples',
+            progress: 'Progress'
+        };
+
+        navItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                var viewId = item.getAttribute('data-view');
+
+                // Update nav
+                navItems.forEach(function (n) { n.classList.remove('active'); });
+                item.classList.add('active');
+
+                // Show view
+                views.forEach(function (v) { v.classList.remove('active'); });
+                var target = document.getElementById('view' + viewId.charAt(0).toUpperCase() + viewId.slice(1));
+                if (target) target.classList.add('active');
+
+                // Breadcrumb
+                breadcrumbCurrent.textContent = viewNames[viewId] || viewId;
+
+                // Close mobile sidebar
+                sidebar.classList.remove('open');
+                sidebarOverlay.classList.remove('active');
+            });
+        });
+
+        // ----- Sidebar Toggle (desktop collapse) -----
+        sidebarToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('collapsed');
+            sidebarToggle.innerHTML = sidebar.classList.contains('collapsed') ? '&#9654;' : '&#9664;';
+        });
+
+        // ----- Mobile menu -----
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function () {
+                sidebar.classList.add('open');
+                sidebarOverlay.classList.add('active');
+            });
+        }
+
+        sidebarOverlay.addEventListener('click', function () {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+        });
+
+        // ----- Theme Switching -----
+        var savedTheme = localStorage.getItem('pylearn-theme') || 'midnight-ocean';
+        applyTheme(savedTheme);
+
+        themeSwitches.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var theme = btn.getAttribute('data-theme');
+                applyTheme(theme);
+                localStorage.setItem('pylearn-theme', theme);
+            });
+        });
+
+        function applyTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            themeSwitches.forEach(function (s) {
+                s.classList.toggle('active', s.getAttribute('data-theme') === theme);
+            });
+        }
+
+        // ----- Accordion -----
+        accordionTriggers.forEach(function (trigger) {
+            trigger.addEventListener('click', function () {
+                var item = trigger.parentElement;
+                var isOpen = item.classList.contains('open');
+                // Close siblings
+                item.parentElement.querySelectorAll('.accordion-item').forEach(function (sibling) {
+                    sibling.classList.remove('open');
+                });
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // ----- Code Block Copy -----
+        copyButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var codeEl = btn.closest('.code-block').querySelector('code');
+                if (!codeEl) return;
+                var text = codeEl.textContent;
+                navigator.clipboard.writeText(text).then(function () {
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(function () {
+                        btn.textContent = 'Copy';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+        });
+
+        // ----- Tabs -----
+        tabItems.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                tab.parentElement.querySelectorAll('.tab-item').forEach(function (t) {
+                    t.classList.remove('active');
+                });
+                tab.classList.add('active');
+            });
+        });
+
+        // ----- Pills -----
+        pillItems.forEach(function (pill) {
+            pill.addEventListener('click', function () {
+                pill.parentElement.querySelectorAll('.pill-item').forEach(function (p) {
+                    p.classList.remove('active');
+                });
+                pill.classList.add('active');
+            });
+        });
+
+        // ----- Toast System -----
+        window.showToast = function (type, title, message, duration) {
+            duration = duration || 4000;
+            var icons = { success: '\u2714', warning: '\u26A0', error: '\u2718', info: '\u2139' };
+            var toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.innerHTML =
+                '<span class="toast-icon">' + (icons[type] || '') + '</span>' +
+                '<div class="toast-content">' +
+                '  <div class="toast-title">' + title + '</div>' +
+                '  <div class="toast-message">' + message + '</div>' +
+                '</div>' +
+                '<button class="toast-close" onclick="this.parentElement.remove()">&times;</button>';
+            toastContainer.appendChild(toast);
+            setTimeout(function () {
+                toast.classList.add('removing');
+                setTimeout(function () { toast.remove(); }, 300);
+            }, duration);
+        };
+
+        // ----- Modal System -----
+        window.openModal = function () {
+            modalOverlay.classList.add('active');
+        };
+        window.closeModal = function () {
+            modalOverlay.classList.remove('active');
+        };
+        modalOverlay.addEventListener('click', function (e) {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // ----- Settings Modal -----
+        var settingsOverlay = document.getElementById('settingsOverlay');
+        var settingsBtn = document.getElementById('settingsBtn');
+        if (settingsBtn && settingsOverlay) {
+            settingsBtn.addEventListener('click', function () {
+                settingsOverlay.classList.add('active');
+            });
+            document.getElementById('settingsClose').addEventListener('click', function () {
+                settingsOverlay.classList.remove('active');
+            });
+            document.getElementById('settingsDone').addEventListener('click', function () {
+                settingsOverlay.classList.remove('active');
+            });
+            settingsOverlay.addEventListener('click', function (e) {
+                if (e.target === settingsOverlay) settingsOverlay.classList.remove('active');
+            });
+            // --- Helper: highlight active button in a group ---
+            function setActiveBtn(groupIds, activeId) {
+                groupIds.forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) el.classList.toggle('btn-primary', id === activeId);
+                    if (el) el.classList.toggle('btn-secondary', id !== activeId);
+                });
+            }
+
+            function applyTabSize(size) {
+                document.documentElement.style.setProperty('--code-tab-size', size);
+                document.querySelectorAll('textarea').forEach(function (ta) {
+                    ta.style.tabSize = size;
+                });
+            }
+
+            var fontBtnIds = ['fontSmall', 'fontMedium', 'fontLarge'];
+            var tabBtnIds = ['tab2', 'tab4'];
+            var outputBtnIds = ['outputBottom', 'outputRight'];
+
+            // Font size
+            document.getElementById('fontSmall').addEventListener('click', function () {
+                document.documentElement.style.fontSize = '13px';
+                localStorage.setItem('pylearn_fontsize', '13px');
+                setActiveBtn(fontBtnIds, 'fontSmall');
+            });
+            document.getElementById('fontMedium').addEventListener('click', function () {
+                document.documentElement.style.fontSize = '15px';
+                localStorage.setItem('pylearn_fontsize', '15px');
+                setActiveBtn(fontBtnIds, 'fontMedium');
+            });
+            document.getElementById('fontLarge').addEventListener('click', function () {
+                document.documentElement.style.fontSize = '17px';
+                localStorage.setItem('pylearn_fontsize', '17px');
+                setActiveBtn(fontBtnIds, 'fontLarge');
+            });
+            // Tab size
+            document.getElementById('tab2').addEventListener('click', function () {
+                localStorage.setItem('pylearn_tabsize', '2');
+                applyTabSize('2');
+                setActiveBtn(tabBtnIds, 'tab2');
+            });
+            document.getElementById('tab4').addEventListener('click', function () {
+                localStorage.setItem('pylearn_tabsize', '4');
+                applyTabSize('4');
+                setActiveBtn(tabBtnIds, 'tab4');
+            });
+            // Output position
+            document.getElementById('outputBottom').addEventListener('click', function () {
+                localStorage.setItem('pylearn_output_dock', 'bottom');
+                if (typeof window._applyOutputDock === 'function') window._applyOutputDock('bottom');
+                setActiveBtn(outputBtnIds, 'outputBottom');
+            });
+            document.getElementById('outputRight').addEventListener('click', function () {
+                localStorage.setItem('pylearn_output_dock', 'right');
+                if (typeof window._applyOutputDock === 'function') window._applyOutputDock('right');
+                setActiveBtn(outputBtnIds, 'outputRight');
+            });
+
+            // --- Restore all settings on load ---
+            var savedFont = localStorage.getItem('pylearn_fontsize');
+            if (savedFont) {
+                document.documentElement.style.fontSize = savedFont;
+                var fontMap = { '13px': 'fontSmall', '15px': 'fontMedium', '17px': 'fontLarge' };
+                setActiveBtn(fontBtnIds, fontMap[savedFont] || 'fontMedium');
+            } else {
+                setActiveBtn(fontBtnIds, 'fontMedium');
+            }
+
+            var savedTab = localStorage.getItem('pylearn_tabsize');
+            applyTabSize(savedTab || '4');
+            setActiveBtn(tabBtnIds, savedTab === '2' ? 'tab2' : 'tab4');
+
+            var savedDock = localStorage.getItem('pylearn_output_dock');
+            setActiveBtn(outputBtnIds, savedDock === 'right' ? 'outputRight' : 'outputBottom');
+        }
+
+        // ----- Notifications Panel -----
+        var notifOverlay = document.getElementById('notifOverlay');
+        var notifBtn = document.getElementById('notifBtn');
+        if (notifBtn && notifOverlay) {
+            notifBtn.addEventListener('click', function () {
+                // Populate with recent activity if ProgressTracker is available
+                var body = document.getElementById('notifBody');
+                if (typeof ProgressTracker !== 'undefined') {
+                    var recent = ProgressTracker.getRecentActivity(5);
+                    if (recent.length > 0) {
+                        body.innerHTML = recent.map(function (r) {
+                            var status = r.completed ? '<span style="color:var(--success);">&#10004; Completed</span>' : '<span style="color:var(--warning);">In progress</span>';
+                            return '<div style="padding:8px 0;border-bottom:1px solid var(--border-color);">' +
+                                '<strong>' + (r.challengeId || 'Challenge') + '</strong><br>' +
+                                status + ' &middot; Best: ' + (r.bestScore || 0) + '% &middot; Attempts: ' + (r.attempts || 0) +
+                                '</div>';
+                        }).join('');
+                    } else {
+                        body.innerHTML = '<p class="text-muted">No activity yet. Complete challenges to see your history here!</p>';
+                    }
+                }
+                notifOverlay.classList.add('active');
+            });
+            document.getElementById('notifClose').addEventListener('click', function () {
+                notifOverlay.classList.remove('active');
+            });
+            document.getElementById('notifDone').addEventListener('click', function () {
+                notifOverlay.classList.remove('active');
+            });
+            notifOverlay.addEventListener('click', function (e) {
+                if (e.target === notifOverlay) notifOverlay.classList.remove('active');
+            });
+        }
+
+        // ----- Achievement Popup -----
+        window.showAchievement = function () {
+            achievementPopup.classList.add('active');
+            setTimeout(function () {
+                achievementPopup.classList.remove('active');
+            }, 5000);
+        };
+
+        // Demo toasts removed — app.js handles welcome messages dynamically
+
+        // ----- Split Pane Resizer -----
+        var divider = document.querySelector('.split-pane-divider');
+        if (divider) {
+            var isResizing = false;
+            divider.addEventListener('mousedown', function (e) {
+                isResizing = true;
+                divider.classList.add('dragging');
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+                e.preventDefault();
+            });
+
+            function onMouseMove(e) {
+                if (!isResizing) return;
+                var pane = divider.closest('.split-pane');
+                var left = pane.querySelector('.split-pane-left');
+                var rect = pane.getBoundingClientRect();
+                var percent = ((e.clientX - rect.left) / rect.width) * 100;
+                percent = Math.max(20, Math.min(70, percent));
+                left.style.width = percent + '%';
+            }
+
+            function onMouseUp() {
+                isResizing = false;
+                divider.classList.remove('dragging');
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+        }
+
+    })();
+    </script>
+
+    <!-- Pyodide WebAssembly Python Runtime -->
+    <script src="pyodide/pyodide.js"></script>
+
+    <!-- Content Data (loaded first so engine can merge them) -->
+    <script src="curriculum.js"></script>
+    <script src="activities_m1_m4.js"></script>
+    <script src="activities_m5_m8.js"></script>
+    <script src="activities_m9_m12.js"></script>
+    <script src="projects_part1.js"></script>
+    <script src="projects_part2.js"></script>
+    <script src="examples.js"></script>
+
+    <!-- Evaluation Engine Modules -->
+    <script src="js/pyodide-runner.js"></script>
+    <script src="js/answer-checker.js"></script>
+    <script src="js/progress-tracker.js"></script>
+    <script src="js/challenges.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/editor-enhance.js"></script>
+    <script src="js/user-content.js"></script>
+    <script src="js/shortcuts.js"></script>
+
+    <script>
+    (function() {
+        var sb = document.getElementById('searchBtn');
+        if (sb) sb.addEventListener('click', function() { if (window.SearchSystem) SearchSystem.open(); });
+        if (window.SearchSystem) SearchSystem.init();
+    })();
+    </script>
+
+</body>
+</html>
