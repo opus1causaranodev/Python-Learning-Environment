@@ -55,7 +55,29 @@ A comprehensive, interactive Python learning platform built as a standalone desk
 
 Download `PyLearn.exe` from the [Releases](../../releases) page and double-click to run. No installation needed — it's a portable executable.
 
-### Option 2: Run from source
+### Option 2: Windows Installer (Setup Wizard)
+
+Download `PyLearn-Setup.exe` from the [Releases](../../releases) page. This is a standard Windows installer that provides:
+- Install location selection
+- Start Menu & desktop shortcuts
+- Add/Remove Programs entry
+- Clean uninstaller
+
+> To build the installer yourself, open [`installer/PyLearn-Setup.iss`](installer/PyLearn-Setup.iss) in [Inno Setup 6+](https://jrsoftware.org/isinfo.php) and compile.
+
+### Option 3: PowerShell Web Installer
+
+Run the one-line command below — it downloads the latest release from GitHub and sets everything up for you:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File Install-PyLearn.ps1
+```
+
+Or right-click [`installer/Install-PyLearn.ps1`](installer/Install-PyLearn.ps1) > **Run with PowerShell**.
+
+Features: choice of install location, optional shortcuts, download progress, and a generated uninstaller.
+
+### Option 4: Run from source
 
 ```bash
 git clone https://github.com/opus1causaranodev/python-learning-environment.git
@@ -65,7 +87,7 @@ npm install
 npm start
 ```
 
-### Option 3: Open in browser
+### Option 5: Open in browser
 
 Open `index.html` directly in a modern browser. Pyodide will load from the local `pyodide/` folder (or fall back to CDN if files aren't present).
 
@@ -126,6 +148,9 @@ The portable executable will be created at `dist/PyLearn.exe`.
 │   └── shortcuts.js        # Keyboard shortcuts & accessibility
 ├── fonts/                  # Bundled web fonts
 ├── pyodide/                # Bundled Pyodide runtime (~14 MB)
+├── installer/
+│   ├── PyLearn-Setup.iss   # Inno Setup installer script (standard wizard)
+│   └── Install-PyLearn.ps1 # PowerShell web installer (alternative)
 ├── curriculum.js           # Lesson content for all 12 modules
 ├── examples.js             # Runnable code examples
 ├── activities_*.js         # Challenge definitions
